@@ -14,8 +14,16 @@ public class Guerrier extends Personnage {
      * @param vieMax
      * @param image
      */
+   /* public Guerrier(){
+
+    }*/
     public Guerrier(String name) {
         super(name, 5, 10, 5, 10,"g");
     }
 
+    /*public Guerrier(){
+
+    }*/
+
 }
+

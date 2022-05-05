@@ -2,7 +2,7 @@ package com.personnage.projetwarriorspersonnage;
 
 import com.equipement.projetwarriorspersonnage.Equipement;
 
-public class Personnage {
+public class Personnage { //todo mettre en abstract puis faire un overide dans les enfants. A creuser.
     private String name;
     private String defense;
     private int forceActuelle;
@@ -70,8 +70,8 @@ public class Personnage {
         return vieActuelle;
     }
 
-    public void setVieActuelle(int vieActuelle) {
-        this.vieActuelle = vieActuelle;
+    public void setVieActuelle(int newVieActuelle) {
+        this.vieActuelle = newVieActuelle;
     }
 
     public int getVieMax() {
@@ -101,6 +101,6 @@ public class Personnage {
     /* ****************** return ********************/
 
     public String toString() {
-        return this.getClass().getSimpleName() + "\nSon nom : "+this.name+" Sa force actuelle : "+forceActuelle+" Sa force max "+forceMax+" Sa vie actuelle : "+vieActuelle+" Sa vie max "+vieMax;
+        return this.getClass().getSimpleName() + "\nSon nom : "+name+" \nSa force actuelle : "+forceActuelle+" \nSa force max "+forceMax+" \nSa vie actuelle : "+vieActuelle+" \nSa vie max "+vieMax;
     }
 }//fin class Personnage
