@@ -1,8 +1,14 @@
 package com.plateau.projetwarriorspersonnage;
 
 
-public class Cellule {
-    String cellule;
+import java.util.Scanner;
+
+public abstract class Cellule {
+    String contenu;
+
+    public Cellule(String contenu){
+        this.contenu=contenu;
+    }
 
     /* ****************** Getter et Setter ********************/
 
@@ -10,15 +16,17 @@ public class Cellule {
      *
      * @return une string cellule
      */
-    public String getCellule() {
-        return cellule;
+    public String getContenu() {
+        return contenu;
     }
-    public void setCellule(String cellule) {
-        this.cellule = cellule;
+    public void setContenu(String contenu) {
+        this.contenu = contenu;
     }
 
     /* ****************** return ********************/
     public String toString() {
-        return getCellule();
+        return getContenu();
     }
+
+    public abstract void act(Scanner scanner);
 }

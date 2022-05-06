@@ -3,7 +3,7 @@ package com.plateau.projetwarriorspersonnage;
 import java.util.Random;
 
 public class Plateau {
-    public Cellule tab[] = new Cellule[64];
+    public Cellule tab[] = new Cellule[10];
 
 
     /**
@@ -11,22 +11,24 @@ public class Plateau {
      */
     public Plateau() {
         for (int i = 1; i < tab.length; i++) {
-            tab[i] = new Cellule();
             Random random = new Random();
             int valueRandom = random.nextInt(3 + 1) + 1;
             if (valueRandom == 1) {
-                tab[i].setCellule("vide");
+                tab[i] = new VideCellule();
             } else if (valueRandom == 2) {
-                tab[i].setCellule("surprise");
+                tab[i] = new SurpriseCellule();
             } else if (valueRandom == 3) {
-                tab[i].setCellule("ennemi");
+                tab[i] = new EnnemyCellule();
             }
         }
     }
 
-    public Cellule contenuTabIndiceI(int indice){
-       // System.out.println(tab[indice]);
+    public Cellule contenuTabIndiceI(int indice) {
         return tab[indice];
+    }
+
+    public int getSize() {
+        return tab.length;
     }
 
     /* ****************** Getter et Setter ********************/
@@ -44,7 +46,6 @@ public class Plateau {
         return this.getClass()+"Plateau" +
             "tab=" + Arrays.toString(tab);
     }*/
-
 
 
 }

@@ -3,6 +3,7 @@ import com.personnage.projetwarriorspersonnage.Magicien;
 import com.personnage.projetwarriorspersonnage.Personnage;
 import com.plateau.projetwarriorspersonnage.Cellule;
 import com.plateau.projetwarriorspersonnage.DeVirtuel;
+import com.plateau.projetwarriorspersonnage.EnnemyCellule;
 import com.plateau.projetwarriorspersonnage.Plateau;
 
 import java.util.Scanner;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public class Main {
     private DeVirtuel de;
     private Plateau plateau;
+    private int positionActuelle = 0;
     Scanner scanner;
 
     /* ***************************** Constructeur de main ********************************************* */
@@ -23,6 +25,7 @@ public class Main {
 
     /**
      * Pose les questions de base pour orienter le joueur
+     * Pas de parametre attendu
      */
     public void start() {
         Scanner scanner = new Scanner(System.in);
@@ -49,6 +52,12 @@ public class Main {
     }
 
     /* ***************************** Fonction création du personnage ********************************************* */
+
+    /**
+     * Permet de créer le personnage, guerrier ou magicien
+     *
+     * @return le personnage créé
+     */
     public Personnage creerPersonnage() {
         Scanner scanner = new Scanner(System.in);
         //j'initialise une variable de type objet issue de la class Personnage
@@ -77,6 +86,12 @@ public class Main {
     }
 
     /* ***************************** Fonction est ce que le personnage convient ? ********************************************* */
+
+    /**
+     * Fonction qui demande au joueur s'il veut modifier le nom du personnage
+     *
+     * @param personnage attends en parametre l'objet personnage choisi par le joueur
+     */
     public void questionConfirmationPersonnage(Personnage personnage) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Votre personnage vous convient ? Taper 1");
@@ -94,6 +109,12 @@ public class Main {
     }
 
     /* ***************************** Fonction modifier le nom du personnage  ********************************************* */
+
+    /**
+     * Fonction qui modifie le nom du personnage si le joueur le souhaite
+     *
+     * @param personnage attends en parametre l'objet personnage choisi par le joueur
+     */
     public void modifierNomPersonnage(Personnage personnage) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Comment voulez vous renommer votre personnage ? ");
@@ -104,59 +125,52 @@ public class Main {
     }
 
     /* ***************************** Calculer position  ********************************************* */
-    public void calculerPosition() {
-        int positionActuelle = 0;
-        int nouvellePosition = positionActuelle + this.de.lancerDe();
-        //si nouvellePosition <= 64 alors trouver une solution
-        avancerPersonnage(nouvellePosition);
-        positionActuelle = nouvellePosition;
 
+    /**
+     * Fonction qui lance le dé et calcul la position du joueur
+     */
+    public void calculerPosition() {
+        //si nouvellePosition < 64 alors trouver une solution
+        // if(nouvellePosition<64){
+        //   }
+        while (positionActuelle < plateau.getSize()) {
+            positionActuelle = positionActuelle + this.de.lancerDe();
+            if (positionActuelle >= plateau.getSize()) {
+                System.out.print("Vous avez gagné ! ");
+                System.exit(1);
+                break;
+            }
+            avancerPersonnage(positionActuelle);
+        }
     }
 
     /* ***************************** Faire avancer le personnage  ********************************************* */
+
+    /**
+     * fonction qui fait avancer le personnage sur le plateau et indique ce qu'il y a sur la case
+     *
+     * @param position attends en paramètre la position du joueur
+     */
     public void avancerPersonnage(int position) {
         System.out.println("");
-        System.out.println("Votre personnage est sur la case " + position + " du plateau");
-        System.out.println("Dans cette case il y a un.e " + this.plateau.contenuTabIndiceI(position));
+        System.out.println("Vous avez lancé les dés, votre personnage est maintenant sur la case " + position + " du plateau");
         decisionPersonnage(this.plateau.contenuTabIndiceI(position));
-        System.out.println("Si vous voulez relancer le dé taper 1");
-        System.out.println("Vous voulez quitter ? Taper 2 ");
-        int reponsePersonnage = scanner.nextInt();
-
-        if (reponsePersonnage == 1) {
-            calculerPosition();
-        } else {
-            System.out.println("A bientôt !");
-            System.exit(1);
-        }
-
     }
 
     /* ***************************** Décision du personnage  ********************************************* */
-    public void decisionPersonnage(Cellule valeurCase) {
-        if (valeurCase.equals("ennemi")) {
-            System.out.println("Vous devez combattre !");
-            System.out.println("Vous voulez quitter ? Taper 1");
-            int reponsePersonnage = scanner.nextInt();
-            if (reponsePersonnage == 1) {
-                System.out.println("Je sais pas comment sortir");
-            }
-        } else if (valeurCase.equals("surprise")) {
-            System.out.println("Voulez vous ramasser la surprise ?");
-            System.out.println("Si oui ? Taper 1");
-            System.out.println("Si non ? Taper 2");
-            int reponsePersonnage = scanner.nextInt();
-            if (reponsePersonnage == 1) {
-                System.out.println("Vous avez ramasser la surprise");
-            } else {
-                System.out.println("Tant pis pour vous");
-            }
-        } else if (valeurCase.equals("vide")) {
-            System.out.println("Rien ne se passe");
-        } else {
-            System.out.println("On continue");
-        }
+
+    /**
+     * Fonction en pause pour le moment
+     * ?? propose aux joueurs des choix en fonction de ce qu'il rencontre sur la case ??
+     *
+     * @param args
+     */
+    public void decisionPersonnage(Cellule cellule) {
+        System.out.println(cellule);
+        cellule.act(scanner);
+        calculerPosition();
     }
+
 
     /* ***************************** Execution du code  ********************************************* */
     public static void main(String[] args) {
