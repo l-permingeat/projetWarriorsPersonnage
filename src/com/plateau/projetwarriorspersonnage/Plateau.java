@@ -1,5 +1,7 @@
 package com.plateau.projetwarriorspersonnage;
 
+import com.exception.PersonnageHorsPlateauException;
+
 import java.util.Random;
 
 public class Plateau {
@@ -23,10 +25,24 @@ public class Plateau {
         }
     }
 
-    public Cellule contenuTabIndiceI(int indice) {
-        return tab[indice];
+    /**
+     *
+     * @param indice un entier qui permettra d'indiquer l'indice du tableau que l'on veut consulter
+     * @return le contenu du tableau à l'indice donné
+     * @throws PersonnageHorsPlateauException indique que cette méthode peut déclencher une exception
+     */
+    public Cellule contenuTabIndiceI(int indice) throws PersonnageHorsPlateauException {
+        if (indice < tab.length) {
+            return tab[indice];
+        }
+        //si la condition au dessus est fausse, alors une excepetion est levée
+        throw new PersonnageHorsPlateauException();
     }
 
+    /**
+     *
+     * @return la longeur de mon tableau
+     */
     public int getSize() {
         return tab.length;
     }

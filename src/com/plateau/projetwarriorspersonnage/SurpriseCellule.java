@@ -3,9 +3,7 @@ package com.plateau.projetwarriorspersonnage;
 import java.util.Scanner;
 
 public class SurpriseCellule extends Cellule {
-    public SurpriseCellule() {
-        super("Surprise");
-    }
+
 
     @Override
     public String toString() {

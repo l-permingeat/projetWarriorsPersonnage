@@ -2,7 +2,9 @@ package com.personnage.projetwarriorspersonnage;
 
 import com.equipement.projetwarriorspersonnage.Equipement;
 
-public class Personnage { //todo mettre en abstract puis faire un overide dans les enfants. A creuser.
+import java.util.Scanner;
+
+public abstract class Personnage { //todo mettre en abstract puis faire un overide dans les enfants. A creuser.
     private String name;
     private String defense;
     private int forceActuelle;
@@ -10,7 +12,7 @@ public class Personnage { //todo mettre en abstract puis faire un overide dans l
     private int vieActuelle;
     private int vieMax;
     private String image;
-    Equipement equipement;
+    private Equipement equipement;
 
 
     /**
@@ -101,6 +103,7 @@ public class Personnage { //todo mettre en abstract puis faire un overide dans l
     /* ****************** return ********************/
 
     public String toString() {
+       // return getContenu();
         return this.getClass().getSimpleName() + "\nSon nom : "+name+" \nSa force actuelle : "+forceActuelle+" \nSa force max "+forceMax+" \nSa vie actuelle : "+vieActuelle+" \nSa vie max "+vieMax;
     }
 }//fin class Personnage

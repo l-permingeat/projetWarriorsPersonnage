@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class VideCellule extends Cellule {
 
-    public VideCellule() {
-        super("vide");
-    }
+
 
     @Override
     public String toString() {

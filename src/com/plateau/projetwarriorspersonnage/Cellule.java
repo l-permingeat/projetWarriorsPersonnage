@@ -6,9 +6,7 @@ import java.util.Scanner;
 public abstract class Cellule {
     String contenu;
 
-    public Cellule(String contenu){
-        this.contenu=contenu;
-    }
+    public abstract void act(Scanner scanner);
 
     /* ****************** Getter et Setter ********************/
 
@@ -28,5 +26,5 @@ public abstract class Cellule {
         return getContenu();
     }
 
-    public abstract void act(Scanner scanner);
+
 }
