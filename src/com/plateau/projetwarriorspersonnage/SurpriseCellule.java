@@ -1,13 +1,15 @@
 package com.plateau.projetwarriorspersonnage;
 
+import com.personnage.projetwarriorspersonnage.Personnage;
+
 import java.util.Scanner;
 
-public class SurpriseCellule extends Cellule {
+public class SurpriseCellule implements Cellule {
 
 
     @Override
     public String toString() {
-        return " Une suprise ! vouls la ramasser ? Taper 1 \nVous voulez quitter ? Taper 2";
+        return "Une suprise ! Vous la ramasser ? Taper 1 \nVous voulez quitter ? Taper 2";
     }
 
     public void act(Scanner scanner) {
@@ -15,6 +17,16 @@ public class SurpriseCellule extends Cellule {
             System.out.println("A bientôt !");
             System.exit(1);
         }
+    }
+
+    @Override
+    public void affectation() {
+
+    }
+
+    @Override
+    public void open() {
+
     }
 }
 

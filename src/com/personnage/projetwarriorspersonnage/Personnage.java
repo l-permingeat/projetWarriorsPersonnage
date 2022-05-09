@@ -104,6 +104,6 @@ public abstract class Personnage { //todo mettre en abstract puis faire un overi
 
     public String toString() {
        // return getContenu();
-        return this.getClass().getSimpleName() + "\nSon nom : "+name+" \nSa force actuelle : "+forceActuelle+" \nSa force max "+forceMax+" \nSa vie actuelle : "+vieActuelle+" \nSa vie max "+vieMax;
+        return this.getClass().getSimpleName() + "\nSon nom : "+name+" \nSa force actuelle : "+forceActuelle+" \nSa force max : "+forceMax+" \nSa vie actuelle : "+vieActuelle+" \nSa vie max : "+vieMax;
     }
 }//fin class Personnage

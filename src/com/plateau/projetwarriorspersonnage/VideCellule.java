@@ -1,8 +1,10 @@
 package com.plateau.projetwarriorspersonnage;
 
+import com.personnage.projetwarriorspersonnage.Personnage;
+
 import java.util.Scanner;
 
-public class VideCellule extends Cellule {
+public class VideCellule implements Cellule {
 
 
 
@@ -16,6 +18,16 @@ public class VideCellule extends Cellule {
             System.out.println("A bientôt !");
             System.exit(1);
         }
+    }
+
+    @Override
+    public void affectation() {
+
+    }
+
+    @Override
+    public void open() {
+
     }
 
 }

@@ -5,7 +5,7 @@ import com.exception.PersonnageHorsPlateauException;
 import java.util.Random;
 
 public class Plateau {
-    public Cellule tab[] = new Cellule[10];
+    public Cellule tab[] = new Cellule[30];
 
 
     /**
@@ -14,7 +14,8 @@ public class Plateau {
     public Plateau() {
         for (int i = 1; i < tab.length; i++) {
             Random random = new Random();
-            int valueRandom = random.nextInt(3 + 1) + 1;
+            int valueRandom = random.nextInt(2 + 1) + 1;
+          //  System.out.println("Valeur random "+valueRandom);
             if (valueRandom == 1) {
                 tab[i] = new VideCellule();
             } else if (valueRandom == 2) {

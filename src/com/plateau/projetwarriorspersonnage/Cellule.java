@@ -1,30 +1,15 @@
 package com.plateau.projetwarriorspersonnage;
 
 
+import com.personnage.projetwarriorspersonnage.Personnage;
+
 import java.util.Scanner;
 
-public abstract class Cellule {
-    String contenu;
+public interface Cellule {
 
-    public abstract void act(Scanner scanner);
+     void act(Scanner scanner);
 
-    /* ****************** Getter et Setter ********************/
+     void affectation();
 
-    /**
-     *
-     * @return une string cellule
-     */
-    public String getContenu() {
-        return contenu;
-    }
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
-    }
-
-    /* ****************** return ********************/
-    public String toString() {
-        return getContenu();
-    }
-
-
+    void open();
 }
