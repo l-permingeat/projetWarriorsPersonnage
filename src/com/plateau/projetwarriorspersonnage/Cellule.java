@@ -9,7 +9,7 @@ public interface Cellule {
 
      void act(Scanner scanner);
 
-     void affectation();
 
-    void open(Personnage personnage);
+
+    void open();
 }

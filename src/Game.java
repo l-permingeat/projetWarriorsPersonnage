@@ -183,7 +183,12 @@ public class Game {
     public void decisionPersonnage(Cellule cellule, Personnage personnage) {
         System.out.println(cellule);
         cellule.act(scanner);
-        cellule.open(personnage);
+        //open affiche quel type de surprise c'est (massue, epée...) ou le type d'ennemi (gobelins...)
+        cellule.open();
+
+        // /!\ ici il doit y avoir l'appel d'une méthode combat /!\
+
+        //fait avancer le personnage
         calculerPosition();
     }
 

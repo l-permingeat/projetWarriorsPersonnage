@@ -27,13 +27,10 @@ public class SurpriseCellule implements Cellule {
         }
     }
 
-    @Override
-    public void affectation() {
 
-    }
 
     @Override
-    public void open(Personnage personnage) {
+    public void open() {
         Random random = new Random();
         int valueRandom = random.nextInt(5 + 1) + 1;
         if (valueRandom == 1) {

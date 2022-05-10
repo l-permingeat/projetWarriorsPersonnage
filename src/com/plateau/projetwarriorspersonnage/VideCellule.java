@@ -20,14 +20,11 @@ public class VideCellule implements Cellule {
         }
     }
 
-    @Override
-    public void affectation() {
 
-    }
 
     @Override
-    public void open(Personnage personnage) {
-        System.out.println("La case est vide. Votre "+ personnage + "peut se reposer.");
+    public void open() {
+        System.out.println("La case est vide. Vous pouvez vous reposer.");
 
     }
 

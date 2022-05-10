@@ -25,21 +25,9 @@ public class EnnemyCellule implements Cellule {
             System.exit(1);
         }
     }
+
     @Override
-    public void affectation() {
-        Random random = new Random();
-        int valueRandom = random.nextInt(2 + 1) + 1;
-        if (valueRandom == 1) {
-            ennemi=new Dragons();
-            //personnage.setEquipement(new MassueGuerrier());
-        } else if (valueRandom == 2) {
-            ennemi=new Gobelins();
-        } else if (valueRandom == 3) {
-             ennemi=new Sorciers();
-        }
-    }
-    @Override
-    public void open(Personnage personnage) {
+    public void open() {
         Random random = new Random();
         int valueRandom = random.nextInt(2 + 1) + 1;
         if (valueRandom == 1) {
@@ -50,12 +38,12 @@ public class EnnemyCellule implements Cellule {
         } else if (valueRandom == 3) {
             ennemi=new Sorciers();
         }
-        System.out.println("Le type d'ennemi est "+ennemi.getName());
+        System.out.println("Le type d'ennemi est un "+ennemi.getName() + " !");
 
        // if (personnage instanceof Magicien){}
-
-
     }
+
+
 
     public Ennemi getEnnemi() {
         return ennemi;
