@@ -10,7 +10,7 @@ public class VideCellule implements Cellule {
 
     @Override
     public String toString() {
-        return "Cette case est vide, vous voulez continuer ? Taper 1 \nVous voulez quitter ? Taper 2";
+        return "la case est vide ! \nVous voulez continuer ? Taper 1 \nVous voulez quitter ? Taper 2";
     }
 
     public void act(Scanner scanner) {
@@ -24,7 +24,12 @@ public class VideCellule implements Cellule {
 
     @Override
     public void open() {
-        System.out.println("La case est vide. Vous pouvez vous reposer.");
+        System.out.println("");
+
+    }
+
+    @Override
+    public void action(Personnage personnage) {
 
     }
 

@@ -1,7 +1,7 @@
 package com.equipement.projetwarriorspersonnage;
 
-public class BouleDeFeuMagicien extends Equipement {
-    public BouleDeFeuMagicien() {
+public class BouleDeFeu extends Equipement {
+    public BouleDeFeu() {
         super("Boule de feu", 7);
     }
 }

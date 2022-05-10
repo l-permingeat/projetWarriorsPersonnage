@@ -1,7 +1,7 @@
 package com.equipement.projetwarriorspersonnage;
 
-public class EclairMagicien extends Equipement{
-    public EclairMagicien() {
+public class Eclair extends Equipement{
+    public Eclair() {
         super("Eclair", 2);
     }
 }

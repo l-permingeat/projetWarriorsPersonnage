@@ -41,7 +41,7 @@ public class Game {
 
             if (reponseChoix == 1) {
                 //envoi vers la fonction création de personnage
-                 personnage = creerPersonnage();
+                 creerPersonnage();
             } else if (reponseChoix == 2) {
                 calculerPosition();
 
@@ -65,10 +65,9 @@ public class Game {
      *
      * @return le personnage créé
      */
-    public Personnage creerPersonnage() {
-        Scanner scanner = new Scanner(System.in);
+    public void creerPersonnage() {
         //j'initialise une variable de type objet issue de la class Personnage
-        Personnage personnage = null;
+       // Personnage personnage = null;
         try {
             System.out.print("Souhaitez vous créer un magicien ou un guerrier ? ");
             String reponseTypePersonnage = scanner.nextLine();
@@ -76,11 +75,11 @@ public class Game {
             String reponseNomPersonnage = scanner.nextLine();
 
             if (reponseTypePersonnage.equals("guerrier")) {
-                personnage = new Guerrier(reponseNomPersonnage);
+                this.personnage = new Guerrier(reponseNomPersonnage);
                 //personnage.setEquipement(new MassueGuerrier());
 
             } else if (reponseTypePersonnage.equals("magicien")) {
-                personnage = new Magicien((reponseNomPersonnage));
+                this.personnage = new Magicien((reponseNomPersonnage));
             }
         } catch (Exception e) {
             System.out.print(" Mauvaise saisie, vous devez taper guerrier ou magicien ");
@@ -90,9 +89,9 @@ public class Game {
         System.out.println("Votre personnage est un.e " + personnage);
 
         //appelle de la fonction pour demander au joueur s'il souhaite modifier le nom de son personnage
-        questionConfirmationPersonnage(personnage);
+        questionConfirmationPersonnage();
 
-        return personnage;
+      //  return personnage;
     }
 
     /* ***************************** Fonction est ce que le personnage convient ? ********************************************* */
@@ -102,7 +101,7 @@ public class Game {
      *
      * @param personnage attends en parametre l'objet personnage choisi par le joueur
      */
-    public void questionConfirmationPersonnage(Personnage personnage) {
+    public void questionConfirmationPersonnage() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Votre personnage vous convient ? Taper 1");
         System.out.print("Sinon, taper 2 ");
@@ -114,7 +113,7 @@ public class Game {
             //appel de la fonction qui calcule la position puis qui fais avancer le personnage
             calculerPosition();
         } else if (reponseChoix == 2) {
-            modifierNomPersonnage(personnage);
+            modifierNomPersonnage();
         }
     }
 
@@ -124,13 +123,13 @@ public class Game {
      * Modifie le nom du personnage si le joueur le souhaite
      * @param personnage attends en parametre l'objet personnage choisi par le joueur
      */
-    public void modifierNomPersonnage(Personnage personnage) {
+    public void modifierNomPersonnage() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Comment voulez vous renommer votre personnage ? ");
         String reponseModifNomPersonnage = scanner.nextLine();
         personnage.setName(reponseModifNomPersonnage);
         System.out.println("Votre personnage est un.e" + personnage);
-        questionConfirmationPersonnage(personnage);
+        questionConfirmationPersonnage();
     }
 
     /* ***************************** Calculer position  ********************************************* */
@@ -169,9 +168,8 @@ public class Game {
      * @param position attends en paramètre la position du joueur
      */
     public void avancerPersonnage(int position)throws PersonnageHorsPlateauException {
-        System.out.println("");
-        System.out.println("Vous avez lancé les dés, votre personnage est maintenant sur la case " + position + " du plateau");
-        decisionPersonnage(this.plateau.contenuTabIndiceI(position),personnage);
+        System.out.println("Vous avez lancé les dés. " + personnage.getName() + " est sur la case " + position + " du plateau");
+        decisionPersonnage(this.plateau.contenuTabIndiceI(position));
     }
 
     /* ***************************** Décision du personnage  ********************************************* */
@@ -180,11 +178,14 @@ public class Game {
      * Propose aux joueurs des choix en fonction de ce qu'il rencontre sur la case
      * @param cellule, c'est l'objet qu'il y a dans la cellule (ennemi, vide, surprise...)
      */
-    public void decisionPersonnage(Cellule cellule, Personnage personnage) {
+    public void decisionPersonnage(Cellule cellule) {
         System.out.println(cellule);
         cellule.act(scanner);
+       // System.out.println("le personnage est " + personnage );
         //open affiche quel type de surprise c'est (massue, epée...) ou le type d'ennemi (gobelins...)
         cellule.open();
+
+        cellule.action(personnage);
 
         // /!\ ici il doit y avoir l'appel d'une méthode combat /!\
 

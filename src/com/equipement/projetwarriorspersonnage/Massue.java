@@ -1,7 +1,7 @@
 package com.equipement.projetwarriorspersonnage;
 
-public class MassueGuerrier extends Equipement {
-    public MassueGuerrier() {
+public class Massue extends Equipement {
+    public Massue() {
         super("massue", 3);
     }
 

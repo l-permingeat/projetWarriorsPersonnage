@@ -1,7 +1,7 @@
 package com.equipement.projetwarriorspersonnage;
 
-public class EpeeGuerrier extends Equipement {
-    public EpeeGuerrier() {
+public class Epee extends Equipement {
+    public Epee() {
         super("Epee", 5);
     }
 
