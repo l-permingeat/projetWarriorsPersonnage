@@ -171,7 +171,7 @@ public class Game {
     public void avancerPersonnage(int position)throws PersonnageHorsPlateauException {
         System.out.println("");
         System.out.println("Vous avez lancé les dés, votre personnage est maintenant sur la case " + position + " du plateau");
-        decisionPersonnage(this.plateau.contenuTabIndiceI(position));
+        decisionPersonnage(this.plateau.contenuTabIndiceI(position),personnage);
     }
 
     /* ***************************** Décision du personnage  ********************************************* */
@@ -180,10 +180,10 @@ public class Game {
      * Propose aux joueurs des choix en fonction de ce qu'il rencontre sur la case
      * @param cellule, c'est l'objet qu'il y a dans la cellule (ennemi, vide, surprise...)
      */
-    public void decisionPersonnage(Cellule cellule) {
+    public void decisionPersonnage(Cellule cellule, Personnage personnage) {
         System.out.println(cellule);
         cellule.act(scanner);
-        cellule.open();
+        cellule.open(personnage);
         calculerPosition();
     }
 

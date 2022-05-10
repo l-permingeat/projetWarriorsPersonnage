@@ -26,7 +26,8 @@ public class VideCellule implements Cellule {
     }
 
     @Override
-    public void open() {
+    public void open(Personnage personnage) {
+        System.out.println("La case est vide. Votre "+ personnage + "peut se reposer.");
 
     }
 

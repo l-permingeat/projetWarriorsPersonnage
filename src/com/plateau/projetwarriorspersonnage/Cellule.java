@@ -11,5 +11,5 @@ public interface Cellule {
 
      void affectation();
 
-    void open();
+    void open(Personnage personnage);
 }

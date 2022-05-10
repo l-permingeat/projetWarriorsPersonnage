@@ -1,7 +1,9 @@
 package com.equipement.projetwarriorspersonnage;
 
 public class EpeeGuerrier extends Equipement {
-    public EpeeGuerrier(String name, int niveauAttaque) {
+    public EpeeGuerrier() {
         super("Epee", 5);
     }
+
+
 }

@@ -39,7 +39,7 @@ public class EnnemyCellule implements Cellule {
         }
     }
     @Override
-    public void open() {
+    public void open(Personnage personnage) {
         Random random = new Random();
         int valueRandom = random.nextInt(2 + 1) + 1;
         if (valueRandom == 1) {
