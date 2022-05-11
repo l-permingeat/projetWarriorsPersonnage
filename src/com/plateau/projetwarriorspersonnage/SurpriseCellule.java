@@ -14,7 +14,7 @@ public class SurpriseCellule implements Cellule {
 
     @Override
     public String toString() {
-        return "Une suprise ! Vous la ramasser ? Taper 1 \nVous voulez quitter ? Taper 2";
+        return "Une suprise ! Vous la ramassez ? Taper 1 \nVous voulez quitter ? Taper 2";
     }
 
     public void act(Scanner scanner) {
@@ -48,35 +48,21 @@ public class SurpriseCellule implements Cellule {
 
     @Override
     public void action(Personnage personnage) {
-        System.out.println("coucou la surprise" + surprise);
         if ((surprise instanceof Eclair || surprise instanceof BouleDeFeu) && personnage instanceof Magicien) {
             personnage.setEquipement(surprise);
-            System.out.println("Vous avez récupéré un " + personnage.getEquipement().getName() + ". Il vous apporte " + personnage.getEquipement().getNiveauAttaque() + " de force");
+            System.out.println("Vous avez récupéré un.e " + personnage.getEquipement().getName() + ". Il vous apporte " + personnage.getEquipement().getNiveauAttaque() + " de force");
         } else if ((surprise instanceof Massue || surprise instanceof Epee) && personnage instanceof Guerrier) {
             personnage.setEquipement(surprise);
-            System.out.println("Vous avez récupéré un " + personnage.getEquipement().getName() + ". Il vous apporte " + personnage.getEquipement().getNiveauAttaque() + " de force");
+            System.out.println("Vous avez récupéré un.e " + personnage.getEquipement().getName() + ". Il vous apporte " + personnage.getEquipement().getNiveauAttaque() + " de force");
         } else if ((surprise instanceof PotionDeVie || surprise instanceof GrandePotionVie) && (personnage instanceof Guerrier || personnage instanceof Magicien)) {
-            personnage.setVieActuelle(personnage.getVieActuelle()+surprise.getNiveauAttaque());
-            System.out.println("Vous avez maintenant "+personnage.getVieActuelle()+" vie.s");
-        }
-
-            /*if (surprise instanceof Eclair && personnage instanceof Magicien) {
-                personnage.setEquipement(new Eclair());
-
-            } else if (surprise instanceof BouleDeFeu && personnage instanceof Magicien) {
-                personnage.setEquipement(new BouleDeFeu());
-            } else if (surprise instanceof Massue && personnage instanceof Guerrier) {
-                personnage.setEquipement(new Massue());
-            } else if (surprise instanceof Epee && personnage instanceof Guerrier) {
-                personnage.setEquipement(new Epee());
-            } else if (surprise instanceof PotionDeVie && (personnage instanceof Guerrier || personnage instanceof Magicien)) {
-                personnage.setEquipement(new PotionDeVie());
-            } else if (surprise instanceof GrandePotionVie && (personnage instanceof Guerrier || personnage instanceof Magicien)) {
-                personnage.setEquipement(new GrandePotionVie());
+            if ((personnage.getVieActuelle() + surprise.getNiveauAttaque()) > personnage.getVieMax()) {
+                personnage.setVieActuelle(personnage.getVieMax());
+                System.out.println("Vous avez maintenant " + personnage.getVieActuelle() + " vie.s");
+            } else {
+                personnage.setVieActuelle(personnage.getVieActuelle() + surprise.getNiveauAttaque());
             }
-            System.out.println("Vous avez récupérer un " + personnage.getEquipement().getName() + ". Il vous apporte " + personnage.getEquipement().getNiveauAttaque() + " de force");
-            System.out.println("");
-        }*/
+
+        }
     }
 }
 

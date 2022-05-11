@@ -1,9 +1,6 @@
 package com.plateau.projetwarriorspersonnage;
 
-import com.ennemi.projetwarriorspersonnage.Dragons;
 import com.ennemi.projetwarriorspersonnage.Ennemi;
-import com.ennemi.projetwarriorspersonnage.Gobelins;
-import com.ennemi.projetwarriorspersonnage.Sorciers;
 import com.exception.PersonnageHorsPlateauException;
 
 import java.util.Random;
@@ -23,11 +20,11 @@ public class Plateau {
             //  System.out.println("Valeur random "+valueRandom);
             if (valueRandom == 1) {
                 tab[i] = new VideCellule();
-                tab[i].open();
+              //  tab[i].open();
 
             } else if (valueRandom == 2) {
                 tab[i] = new SurpriseCellule();
-                tab[i].open();
+              //  tab[i].open();
 
             } else if (valueRandom == 3) {
                 tab[i] = new EnnemyCellule();

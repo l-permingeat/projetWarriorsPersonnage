@@ -53,7 +53,7 @@ public class Game {
                 start();
             }
         } catch (Exception e) {
-            System.out.println("Il y a une erreur");
+            System.out.println("Il y a une erreur - fonction Start");
             start();
         }
     }

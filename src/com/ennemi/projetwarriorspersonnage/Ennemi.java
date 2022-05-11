@@ -2,6 +2,7 @@ package com.ennemi.projetwarriorspersonnage;
 
 public abstract class Ennemi {
     private int pointDeVieActuelle;
+
     private int pointDattaque;
 
     private String name;
@@ -18,6 +19,14 @@ public abstract class Ennemi {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getPointDattaque() {
+        return pointDattaque;
+    }
+
+    public void setPointDattaque(int pointDattaque) {
+        this.pointDattaque = pointDattaque;
     }
 
     public int getPointDeVieActuelle() {
