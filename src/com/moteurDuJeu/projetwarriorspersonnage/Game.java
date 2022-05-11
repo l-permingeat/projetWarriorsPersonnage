@@ -1,3 +1,5 @@
+package com.moteurDuJeu.projetwarriorspersonnage;
+
 import com.exception.PersonnageHorsPlateauException;
 import com.personnage.projetwarriorspersonnage.Guerrier;
 import com.personnage.projetwarriorspersonnage.Magicien;
@@ -29,6 +31,7 @@ public class Game {
 
     /**
      * Pose les questions de base pour orienter le joueur
+     * Suivant les choix : renvoie vers la méthode créerPerso, calculerPosition ou quitte le jeux
      * Pas de parametre attendu
      */
     public void start() {
@@ -41,7 +44,7 @@ public class Game {
 
             if (reponseChoix == 1) {
                 //envoi vers la fonction création de personnage
-                 creerPersonnage();
+                creerPersonnage();
             } else if (reponseChoix == 2) {
                 calculerPosition();
 
@@ -62,12 +65,11 @@ public class Game {
 
     /**
      * Permet de créer le personnage, guerrier ou magicien
-     *
-     * @return le personnage créé
+     * A la fin appelle de la méthode questionConfirmationPersonnage
      */
     public void creerPersonnage() {
         //j'initialise une variable de type objet issue de la class Personnage
-       // Personnage personnage = null;
+        // Personnage personnage = null;
         try {
             System.out.print("Souhaitez vous créer un magicien ou un guerrier ? ");
             String reponseTypePersonnage = scanner.nextLine();
@@ -91,15 +93,14 @@ public class Game {
         //appelle de la fonction pour demander au joueur s'il souhaite modifier le nom de son personnage
         questionConfirmationPersonnage();
 
-      //  return personnage;
+        //  return personnage;
     }
 
     /* ***************************** Fonction est ce que le personnage convient ? ********************************************* */
 
     /**
      * Demande au joueur s'il veut modifier le nom du personnage
-     *
-     * @param personnage attends en parametre l'objet personnage choisi par le joueur
+     * Quand le joueur est satisfait du nom, appelle de la méthode calculerPosition
      */
     public void questionConfirmationPersonnage() {
         Scanner scanner = new Scanner(System.in);
@@ -121,7 +122,7 @@ public class Game {
 
     /**
      * Modifie le nom du personnage si le joueur le souhaite
-     * @param personnage attends en parametre l'objet personnage choisi par le joueur
+     * Si le joueur modifie le nom de son personnage, appelle de la méthode questionConfirmationPersonnage
      */
     public void modifierNomPersonnage() {
         Scanner scanner = new Scanner(System.in);
@@ -136,6 +137,8 @@ public class Game {
 
     /**
      * Lance le dé et calcul la position du joueur
+     * Tant que la boucle est vraie, la position du joueur est incrémenter du résultat du dé
+     * puis appelle de la méthode avancerPersonnage
      */
     public void calculerPosition() {
         try {
@@ -144,30 +147,20 @@ public class Game {
                 avancerPersonnage(positionActuelle);
             }
             //écoute si une exception se produit, traitement de l'exception executé
-        } catch (PersonnageHorsPlateauException e){
+        } catch (PersonnageHorsPlateauException e) {
             System.out.print(e);
             System.exit(1);
         }
-
-       /* while (positionActuelle < plateau.getSize()) {
-            positionActuelle = positionActuelle + this.de.lancerDe();
-            if (positionActuelle >= plateau.getSize()) {
-                System.out.print("Vous avez gagné ! ");
-                System.exit(1);
-                break;
-            }
-            avancerPersonnage(positionActuelle);
-        }*/
     }
 
     /* ***************************** Faire avancer le personnage  ********************************************* */
 
     /**
      * Fait avancer le personnage sur le plateau et indique ce qu'il y a sur la case
-     *
      * @param position attends en paramètre la position du joueur
+     * Appelle de la méthode decisionPersonnage
      */
-    public void avancerPersonnage(int position)throws PersonnageHorsPlateauException {
+    public void avancerPersonnage(int position) throws PersonnageHorsPlateauException {
         System.out.println("Vous avez lancé les dés. " + personnage.getName() + " est sur la case " + position + " du plateau");
         decisionPersonnage(this.plateau.contenuTabIndiceI(position));
     }
@@ -177,18 +170,17 @@ public class Game {
     /**
      * Propose aux joueurs des choix en fonction de ce qu'il rencontre sur la case
      * @param cellule, c'est l'objet qu'il y a dans la cellule (ennemi, vide, surprise...)
+     * Appelle de la méthode open pour indiquer ce qu'il y a dans ennemi, surprise ou vide
+     * Puis appelle de la méthode action qui déclenchera un combat si case ennemi ou une récupération d'arme/potion si surprise
+     * Enfin appelle la méthode calculerPosition pour relancer une boucle
      */
     public void decisionPersonnage(Cellule cellule) {
         System.out.println(cellule);
         cellule.act(scanner);
-       // System.out.println("le personnage est " + personnage );
         //open affiche quel type de surprise c'est (massue, epée...) ou le type d'ennemi (gobelins...)
         cellule.open();
-
+        //action déclenche le combat ou la ramasse de surpise
         cellule.action(personnage);
-
-        // /!\ ici il doit y avoir l'appel d'une méthode combat /!\
-
         //fait avancer le personnage
         calculerPosition();
     }
