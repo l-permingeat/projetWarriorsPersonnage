@@ -17,29 +17,14 @@ public class Plateau {
         for (int i = 1; i < tab.length; i++) {
             Random random = new Random();
             int valueRandom = random.nextInt(2 + 1) + 1;
-            //  System.out.println("Valeur random "+valueRandom);
             if (valueRandom == 1) {
                 tab[i] = new VideCellule();
-              //  tab[i].open();
 
             } else if (valueRandom == 2) {
                 tab[i] = new SurpriseCellule();
-              //  tab[i].open();
 
             } else if (valueRandom == 3) {
                 tab[i] = new EnnemyCellule();
-               // tab[i].open();
-
-               /* int valueRandomEnnemy = random.nextInt(2 + 1) + 1;
-                if (valueRandomEnnemy == 1) {
-                    tab[i] = new Dragons();
-                    //personnage.setEquipement(new MassueGuerrier());
-                } else if (valueRandomEnnemy == 2) {
-                    ennemi = new Gobelins();
-                } else if (valueRandomEnnemy == 3) {
-                    ennemi = new Sorciers();
-                }
-                System.out.println("Le type d'ennemi est un " + ennemi.getName() + " !");*/
 
             }
         }
@@ -74,12 +59,5 @@ public class Plateau {
     public void setTab(Cellule[] tab) {
         this.tab = tab;
     }
-
-    /* ****************** return ********************/
-    /*public String toString() {
-        return this.getClass()+"Plateau" +
-            "tab=" + Arrays.toString(tab);
-    }*/
-
 
 }

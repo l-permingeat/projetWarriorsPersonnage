@@ -2,11 +2,15 @@ package com.equipement.projetwarriorspersonnage;
 
 public class Equipement {
 
-
     private String name;
     private int niveauAttaque;
     private int rendsPointDeVie;
 
+    /**
+     *
+     * @param name nom de l'équipement
+     * @param niveauAttaque le niveau d'attaque que le joueur va avoir en ramassant l'équipement
+     */
     public Equipement(String name, int niveauAttaque){
         this.name=name;
         this.niveauAttaque=niveauAttaque;

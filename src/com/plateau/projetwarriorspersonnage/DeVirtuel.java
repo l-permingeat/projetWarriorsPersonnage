@@ -12,9 +12,6 @@ public class DeVirtuel {
      */
     public DeVirtuel(int nbFaces){
         this.nbFaces = nbFaces;
-        /*Random random = new Random();
-        int deResultat = random.nextInt(6 + 1) + 1;
-        System.out.println("Le résultat du dé est "+ deResultat);*/
     }
 
     /**

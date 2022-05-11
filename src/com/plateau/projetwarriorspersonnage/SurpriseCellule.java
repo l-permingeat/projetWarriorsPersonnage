@@ -61,7 +61,6 @@ public class SurpriseCellule implements Cellule {
             } else {
                 personnage.setVieActuelle(personnage.getVieActuelle() + surprise.getNiveauAttaque());
             }
-
         }
     }
 }

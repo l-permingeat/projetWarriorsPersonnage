@@ -10,13 +10,18 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class EnnemyCellule implements Cellule {
-    Ennemi ennemi;
+    private Ennemi ennemi;
 
     @Override
     public String toString() {
         return "Il y a un ennemi ! Voulez vous combattre ? Taper 1 \nVous voulez quitter ? Taper 2";
     }
 
+    /**
+     *
+     * @param scanner
+     * gère la réponse du joueur
+     */
     public void act(Scanner scanner) {
         if (scanner.nextInt() == 2) {
             System.out.println("A bientôt !");
@@ -24,6 +29,9 @@ public class EnnemyCellule implements Cellule {
         }
     }
 
+    /**
+     * génère un dragon, un gobelin ou un sorcier
+     */
     @Override
     public void open() {
         Random random = new Random();
@@ -40,6 +48,11 @@ public class EnnemyCellule implements Cellule {
 
     }
 
+    /**
+     *
+     * @param personnage le type de personnage (guerrier, magicien)
+     * Déclenche le combat
+     */
     public void action(Personnage personnage) {
         //Le personnage attaque l'ennemi : soustraction du nb de force du personnage au nb de vie de l'ennemi
         ennemi.setPointDeVieActuelle(ennemi.getPointDeVieActuelle() - calculForce(personnage));
@@ -57,7 +70,13 @@ public class EnnemyCellule implements Cellule {
         }
     }
 
-    public int calculForce(Personnage personnage) {
+    /**
+     * méthode propre à EnnemyCellule
+     * calcul quel nb de force doivent êre utilisé
+     * @param personnage si le personnage est guerrier ou magicien
+     * @return le nb de force qui peut être utilisé
+     */
+    private int calculForce(Personnage personnage) {
         int force = 0;
         if (personnage.getEquipement() == null) {
             //force d'attaque du personnage + force d'attaque de l'équipement
