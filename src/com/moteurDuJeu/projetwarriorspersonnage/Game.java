@@ -20,6 +20,10 @@ public class Game {
 
 
     /* ***************************** Constructeur de main ********************************************* */
+
+    /**
+     *
+     */
     public Game() {
         this.de = new DeVirtuel(6);
         this.plateau = new Plateau();
@@ -69,7 +73,6 @@ public class Game {
      */
     public void creerPersonnage() {
         //j'initialise une variable de type objet issue de la class Personnage
-        // Personnage personnage = null;
         try {
             System.out.print("Souhaitez vous créer un magicien ou un guerrier ? ");
             String reponseTypePersonnage = scanner.nextLine();
@@ -87,13 +90,11 @@ public class Game {
             System.out.print(" Mauvaise saisie, vous devez taper guerrier ou magicien ");
         }
 
-        //System.out.println("Votre personnage est un "  +reponseTypePersonnage+ ". Il s'appelle : "+personnage.getName());
         System.out.println("Votre personnage est un.e " + personnage);
 
         //appelle de la fonction pour demander au joueur s'il souhaite modifier le nom de son personnage
         questionConfirmationPersonnage();
 
-        //  return personnage;
     }
 
     /* ***************************** Fonction est ce que le personnage convient ? ********************************************* */
@@ -103,14 +104,11 @@ public class Game {
      * Quand le joueur est satisfait du nom, appelle de la méthode calculerPosition
      */
     public void questionConfirmationPersonnage() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Votre personnage vous convient ? Taper 1");
-        System.out.print("Sinon, taper 2 ");
+        System.out.println("Votre personnage vous convient ? Taper 1 \n Sinon, taper 2 ");
         int reponseChoix = scanner.nextInt();
 
         if (reponseChoix == 1) {
-            System.out.println("");
-            System.out.println("Super, nous pouvons passer à la suite !  ");
+            System.out.println(" \nSuper, nous pouvons passer à la suite !  ");
             //appel de la fonction qui calcule la position puis qui fais avancer le personnage
             calculerPosition();
         } else if (reponseChoix == 2) {
@@ -175,10 +173,6 @@ public class Game {
      * Enfin appelle la méthode calculerPosition pour relancer une boucle
      */
     public void decisionPersonnage(Cellule cellule) {
-        System.out.println(cellule);
-        cellule.act(scanner);
-        //open affiche quel type de surprise c'est (massue, epée...) ou le type d'ennemi (gobelins...)
-        cellule.open();
         //action déclenche le combat ou la ramasse de surpise
         cellule.action(personnage);
         //fait avancer le personnage

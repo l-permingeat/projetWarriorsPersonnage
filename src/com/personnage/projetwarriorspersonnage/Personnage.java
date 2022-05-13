@@ -33,7 +33,6 @@ public abstract class Personnage { //todo mettre en abstract puis faire un overi
     }
 
 
-
     /* ****************** Getter et Setter ********************/
 
     public String getName() {

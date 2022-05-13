@@ -1,10 +1,15 @@
 package com.equipement.projetwarriorspersonnage;
 
-public class Equipement {
+import com.personnage.projetwarriorspersonnage.Personnage;
+import com.plateau.projetwarriorspersonnage.Cellule;
+import java.util.Scanner;
+
+public abstract class  Equipement implements Cellule {
 
     private String name;
     private int niveauAttaque;
     private int rendsPointDeVie;
+    private Scanner scanner;
 
     /**
      *
@@ -14,6 +19,17 @@ public class Equipement {
     public Equipement(String name, int niveauAttaque){
         this.name=name;
         this.niveauAttaque=niveauAttaque;
+        this.scanner = new Scanner(System.in);
+    }
+
+    /**
+     *
+     * @param personnage le type de personnage (guerrier, magicien)
+     *
+     */
+    @Override
+    public void action(Personnage personnage) {
+
     }
 
     /* ****************** Getter et Setter ********************/
@@ -40,5 +56,14 @@ public class Equipement {
     public void setRendsPointDeVie(int rendsPointDeVie) {
         this.rendsPointDeVie = rendsPointDeVie;
     }
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+
 
 }//fin

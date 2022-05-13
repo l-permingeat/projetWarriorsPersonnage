@@ -1,33 +1,60 @@
 package com.plateau.projetwarriorspersonnage;
 
-import com.ennemi.projetwarriorspersonnage.Ennemi;
+import com.ennemi.projetwarriorspersonnage.Dragon;
+import com.ennemi.projetwarriorspersonnage.Gobelin;
+import com.ennemi.projetwarriorspersonnage.Sorcier;
+import com.equipement.projetwarriorspersonnage.*;
 import com.exception.PersonnageHorsPlateauException;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Plateau {
-    public Cellule tab[] = new Cellule[30];
-    Ennemi ennemi;
-
+    public List<Cellule> cells = new ArrayList<>(64);
 
     /**
      * fonction qui affecte une cellule à un indice i du tableau, puis lui affecte aléatoirement une surprise, du vide ou un ennemi
      */
     public Plateau() {
-        for (int i = 1; i < tab.length; i++) {
-            Random random = new Random();
-            int valueRandom = random.nextInt(2 + 1) + 1;
-            if (valueRandom == 1) {
-                tab[i] = new VideCellule();
+        /*cells.add(45, new Dragon())
+        cells.add(52, new Dragon())
+        cells.add(56, new Dragon())
+        cells.add(62, new Dragon())*/
 
-            } else if (valueRandom == 2) {
-                tab[i] = new SurpriseCellule();
 
-            } else if (valueRandom == 3) {
-                tab[i] = new EnnemyCellule();
-
-            }
+        for (int i = 0; i < 4; i++) {
+            cells.add(new Dragon());
         }
+        for (int i = 0; i < 10; i++) {
+            cells.add(new Gobelin());
+        }
+        for (int i = 0; i < 10; i++) {
+            cells.add(new Sorcier());
+        }
+        for (int i = 0; i < 5; i++) {
+            cells.add(new Arme("Massue",3));
+        }
+        for (int i = 0; i < 4; i++) {
+            cells.add(new Arme("Epee",5));
+        }
+        for (int i = 0; i < 5; i++) {
+            cells.add(new Spell("Eclair", 2));
+        }
+        for (int i = 0; i < 2; i++) {
+            cells.add(new Spell("Boule de feu", 7));
+        }
+        for (int i = 0; i < 6; i++) {
+            cells.add(new Potion("Potion de vie",2));
+        }
+        for (int i = 0; i < 2; i++) {
+            cells.add(new Potion("Grande potion de vie",5));
+        }
+        for (int i = 0; i < 16; i++) {
+            cells.add(new VideCellule());
+        }
+        Collections.shuffle(cells);
+
     }
 
     /**
@@ -36,8 +63,8 @@ public class Plateau {
      * @throws PersonnageHorsPlateauException indique que cette méthode peut déclencher une exception
      */
     public Cellule contenuTabIndiceI(int indice) throws PersonnageHorsPlateauException {
-        if (indice < tab.length) {
-            return tab[indice];
+        if (indice < cells.size()) {
+            return cells.get(indice);
         }
         //si la condition au dessus est fausse, alors une excepetion est levée
         throw new PersonnageHorsPlateauException();
@@ -47,17 +74,10 @@ public class Plateau {
      * @return la longeur de mon tableau
      */
     public int getSize() {
-        return tab.length;
+        return cells.size();
     }
 
     /* ****************** Getter et Setter ********************/
 
-    public Cellule[] getTab() {
-        return tab;
-    }
-
-    public void setTab(Cellule[] tab) {
-        this.tab = tab;
-    }
 
 }

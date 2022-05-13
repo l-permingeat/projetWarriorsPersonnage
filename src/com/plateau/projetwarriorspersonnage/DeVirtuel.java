@@ -2,8 +2,6 @@ package com.plateau.projetwarriorspersonnage;
 import java.util.Random;
 
 public class DeVirtuel {
-
-    private int value;
     private int nbFaces;
 
     /**
